@@ -1,13 +1,22 @@
-#!/bin/bash
+alias lsusb="cyme"
+alias parub="paru $1 --bottomup"
+alias fpath="readlink -f $1"
 
-mcd () {
-    if ! [[ $# -eq 1 ]]; then
-        echo "Usage: mcd <folder_name>
-        exit 1
-    fi
-    mkdir "$1"
-    cd "$1"
-    
+alias rm="trash"
+
+alias la="ls -la"
+unix-time() {
+    TZ="Europe/Ljubljana" date -d "@$1" +"%d.%m.%Y %H:%M:%S"
 }
-source <(ng completion script)
 
+date-format() {
+    echo "Command: date '+%d.%m.%Y %H:%M:%S'"
+    date '+%d.%m.%Y %H:%M:%S'
+}
+
+trash() {
+    mv -n "$@" ~/.trash
+}
+rmf() {
+    command rm -rf -- "$@";
+}
